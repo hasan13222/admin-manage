@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-managed User Access</title>
+    <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- sytlesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- user page -->
+    <div class="container-fluid user__section">
+        <div class="row">
+            <div class="col-md-6 col-12 d-flex justify-content-center align-items-center user__section__add border-end">
+                <div class="user__section__add__inner text-left">
+                    <h2 class="mb-5 text-center">Create User</h2>
+                    <form id="admin_user_form" method="post" action="/create-user">
+                        <div class="mb-3">
+                            <label for="user_id" class="form-label mb-0">User Id</label>
+                            <input required class="form-control" type="text" name="user_id" id="userId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label mb-0">Password</label>
+                            <input required class="form-control" type="password" name="password" id="password">
+                        </div>
+                        <p class="text-info">
+                            <%= message %>
+                        </p>
+                        <div>
+                            <input type="submit" value="Submit" class="btn d-block w-100 btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 d-flex justify-content-center align-items-center user__section__view">
+                <div class="user__section__view__inner">
+                    <h2 class="mb-2 text-center">View User</h2>
+                    
+                    <% users.forEach(function(entry, i){ %>
+                        <div class="view_item mb-2">
+                            <span>
+                                <%= i+1 %>
+                            </span>
+                            <p>
+                                <%= entry.user_id %>
+                            </p>
+                        </div>
+                    <% }) %>
+
+                        <div class="view_btn text-end mt-3">
+                            <a href="/users">
+                                <button class="btn btn-primary">view</button>
+                            </a>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+
+    <!-- bootstrap cdn js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

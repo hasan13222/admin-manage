@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-managed User Access</title>
+    <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- sytlesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- login page -->
+    <div class="container users__section">
+        <div class="row back_btn mt-4 mb-3">
+            <div class="p-0">
+                <a href="/usr"><button class="btn btn-outline-primary">&lt; Back</button></a>
+
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-bordered border-3 border-black">
+                <thead class="bg-primary-subtle">
+                    <tr>
+                        <th scope="col">User Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(function(entry, i){ %>
+                        <tr>
+                            <td>
+                                <%= entry.user_id %>
+                            </td>
+                            <td>
+                                <%= entry.user_name || '-' %>
+                            </td>
+                            <td>
+                                <img src="../uploads/<%= entry.user_photo || 'proto.png' %>" alt="profile image">
+                            </td>
+                            <td><button onclick="handleDelete('<%= entry.user_id %>')"
+                                    class="btn btn-outline-primary">Delete</button></td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        async function handleDelete(id) {
+            let response = await fetch(`/user/${id}`, {
+                method: 'DELETE'
+            })
+
+            // convert response to json
+            let result = await response.json();
+            if (result){
+                location.reload();
+            }
+
+        }
+    </script>
+
+    <!-- bootstrap cdn js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

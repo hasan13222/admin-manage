@@ -1,0 +1,109 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.btn-primary{
+    background-color: rgba(5, 0, 255, 1);
+}
+.login__section{
+    background: url('../images/bg.png') no-repeat;
+    background-size: cover;
+    height: 100vh;
+    min-height: 350px;
+}
+.login__section__image img{
+    width: 350px;
+    object-fit: contain;
+} 
+.login__section .col-12{
+    height: 100vh;
+    min-height: 100%;
+}
+.login__section__text h2{
+    font-size: 25px;
+}
+
+/* user section */
+.user__section{
+    height: 100vh;
+    min-height: 350px;
+}
+.user__section .col-12{
+    height: 100vh;
+    min-height: 100%;
+}
+.user__section__view .view_item {
+    background-color: rgba(234, 236, 255, 1);
+    padding: 1.5rem 2rem;
+    border-radius: 3px;
+    position: relative;
+}
+.user__section__view .view_item p {
+    background-color: white;
+    margin: 0;
+    width: 200px;
+    padding: 2px 5px;
+}
+.user__section__view .view_item span {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 11px;
+    background-color: rgba(5, 0, 255, 1);
+    padding: 2px 8px;
+    border-radius: 50%;
+    color: white;
+}
+
+@media (max-width: 768px){
+    .user__section__add{
+        border: none !important;
+    }
+}
+
+
+/* users section */
+.users__section .table th {
+    background-color: rgba(234, 236, 255, 1);
+    color: rgba(92, 92, 92, 1);
+    font-weight: 500;
+    border: 2px solid black;
+    padding: 14px 0;
+}
+.users__section .table td {
+    border: 2px solid black;
+    padding: 14px 0;
+}
+.users__section .table {
+    text-align: center;
+}
+
+/* user upload */
+.user_upload__section__add {
+    height: calc(100vh - 80px);
+}
+.user_photo_wrapper input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+}
+
+.user_photo_wrapper {
+    height: 200px;
+    width: 100%;
+    background-color: rgba(238, 238, 238, 1);
+    border-radius: 2px;
+    border: 2px dashed rgba(205, 205, 205, 1);
+    background-image: url();
+}
+
+.user_photo_wrapper img{
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.users__section .table td img {
+    width: auto;
+    max-width: 100%;
+    height: 50px;
+}

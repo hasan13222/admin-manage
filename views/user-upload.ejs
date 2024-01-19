@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-managed User Access</title>
+    <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- sytlesheet -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- user page -->
+    <div class="container user_upload__section">
+        <div class="row">
+            <div class="text-end mt-4 p-0 mb-3">
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">View</button>
+            </div>
+        </div>
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <div></div>
+              <button type="button" class="btn btn-outline-primary" data-bs-dismiss="offcanvas" aria-label="Close">Back</button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="user_upload__section__add__inner text-left">
+                    <form id="admin_user_form" method="post" action="/user">
+                        <div class="mb-3">
+                            <label for="name" class="form-label mb-0">Name</label>
+                            <input readonly value="<%= user_name %>" class="form-control" type="text" name="name" id="userId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="user_photo" class="form-label mb-0">Photo</label>
+                            <div class="user_photo_wrapper">
+                                <img src="../uploads/<%= user_photo %>" alt="profile">
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-center text-danger mt-3">Not Accepted by Admin</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+          </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center align-items-center user_upload__section__add">
+                <div class="user_upload__section__add__inner text-left">
+                    <form enctype="multipart/form-data" id="admin_user_form" method="post" action="/photo-upload/<%= userId %>">
+                        <div class="mb-3">
+                            <label for="name" class="form-label mb-0">Name</label>
+                            <input required value="<%= user_name %>" class="form-control" type="text" name="name" id="userId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="user_photo" class="form-label mb-0">Photo</label>
+                            <div style="background: url('../uploads/<%= user_photo %>') no-repeat; background-size: contain;" class="user_photo_wrapper">
+                                <input required class="form-control" type="file" name="user_photo" id="user_photo">
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" value="Upload" class="btn d-block w-100 btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+
+    <!-- bootstrap cdn js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
